@@ -1,0 +1,5 @@
+# depslib dependency file v1.0
+1613116117 source:d:\cp\code chef\long\feb 21\frogs\main.cpp
+	<iostream>
+	<bits/stdc++.h>
+
