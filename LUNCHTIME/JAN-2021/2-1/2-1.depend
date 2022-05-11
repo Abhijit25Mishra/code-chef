@@ -1,0 +1,5 @@
+# depslib dependency file v1.0
+1612022859 source:d:\cp\code chef\lunchtime\jan-2021\2-1\main.cpp
+	<iostream>
+	<bits/stdc++.h>
+
