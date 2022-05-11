@@ -1,0 +1,5 @@
+# depslib dependency file v1.0
+1610180724 source:d:\cp\code chef\long\jan 21\decodeit\main.cpp
+	<iostream>
+	<bits/stdc++.h>
+
