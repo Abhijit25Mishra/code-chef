@@ -1,13 +1,13 @@
 // Aur Bhai Dekhne aagaye ;)
 // Author: Abhijit Mishra
-#pragma GCC optimize("Ofast")
-#pragma GCC optimize("no-stack-protector")
-#pragma GCC optimize("unroll-loops")
-#pragma GCC target("sse,sse2,sse3,ssse3,popcnt,abm,mmx,tune=native")
-#pragma GCC optimize("fast-math")
-#pragma GCC optimize("Ofast")
-#pragma GCC optimize("unroll-loops")
-#pragma GCC target("avx,avx2,fma")
+// #pragma GCC optimize("Ofast")
+// #pragma GCC optimize("no-stack-protector")
+// #pragma GCC optimize("unroll-loops")
+// #pragma GCC target("sse,sse2,sse3,ssse3,popcnt,abm,mmx,tune=native")
+// #pragma GCC optimize("fast-math")
+// #pragma GCC optimize("Ofast")
+// #pragma GCC optimize("unroll-loops")
+// #pragma GCC target("avx,avx2,fma")
 #include <bits/stdc++.h>
 using namespace std;
 #define pi (3.141592653589)
@@ -41,34 +41,9 @@ int main()
     cin >> t;
     while (t--)
     {
-        ll n;
-        cin >> n;
-        ll ans = 0;
-        fr(n / 2)
-        {
-            ll a = i + 1;
-            ll b = n - (i + 1);
-            ll hcf = __gcd(a, b);
-            if (hcf == min(a, b))
-            {
-                if ((a * b) % hcf == 0)
-                {
-                    ll lcm = (a * b) / hcf;
-                    if (lcm == max(b, a))
-                    {
-                        ans++;
-                    }
-                }
-            }
-        }
-        if (n & 1)
-        {
-            cout << 2 * ans;
-        }
-        else
-        {
-            cout << 2 * ans - 1;
-        }
+        ll a, b;
+        cin >> a >> b;
+        cout << min(a, b);
         nl;
     }
     return 0;
