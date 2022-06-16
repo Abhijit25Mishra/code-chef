@@ -49,6 +49,7 @@ int main()
             cout << -1;
             nl;
         }
+
         else
         {
             string s = "";
