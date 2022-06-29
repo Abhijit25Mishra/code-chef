@@ -3,7 +3,7 @@
 #pragma GCC optimize("Ofast")
 #pragma GCC optimize("no-stack-protector")
 #pragma GCC optimize("unroll-loops")
-#pragma GCC target("sse,sse2,sse3,ssse3,popcnt,abm,mmx,tune=native")
+//#pragma GCC target("sse,sse2,sse3,ssse3,popcnt,abm,mmx,tune=native")
 #pragma GCC optimize("fast-math")
 #pragma GCC optimize("Ofast")
 #pragma GCC optimize("unroll-loops")
@@ -43,54 +43,61 @@ int main()
     {
         ll n;
         cin >> n;
-        if (n == 2)
+        vi v(n);
+        ll gcdall;
+
+        fr(n)
         {
-            cout << 1 << endl;
+            cin >> v[i];
+
+            if (i != 0)
+            {
+                gcdall = __gcd(v[i], gcdall);
+            }
+            else
+            {
+                gcdall = v[0];
+            }
         }
-        else if (n == 3)
+        if (gcdall != 1)
         {
-            cout << 2 << endl;
+            cout << n;
         }
+
         else
         {
-            vi factors;
+            vi x(n);
 
-            ll k = sqrt(n);
-
-            if (k * k == n)
+            nesfr(n, n)
             {
-                k = k;
-            }
-            else
-            {
-                k = k + 1;
-            }
-            rep(i, 1, k)
-            {
-                if (!(n % i))
+                if (i != j)
                 {
-                    factors.pb(i);
+                    if (j == 0)
+                    {
+                        x[i] = v[0];
+                    }
+                    else
+                    {
+                        if (i == 0)
+                        {
+                            x[i] = v[1];
+                        }
+                        x[i] = __gcd(v[j], x[i]);
+                    }
                 }
             }
-
-            if (k * k == n)
+            ll ans = 0;
+            // fr(n) { cout << x[i] << "  "; }
+            fr(n)
             {
-                cout << factors.size() * 4 - 1;
-            }
-            else
-            {
-                if (factors.size() == (k - 1))
+                if (x[i] != 1)
                 {
-                    cout << (factors.size() * 2 - 1) * 2 - 1;
-                }
-                else
-                {
-                    cout << (factors.size() * 2 - 1) * 2;
+                    ans++;
                 }
             }
-
-            nl;
+            cout << ans;
         }
+        nl;
     }
     return 0;
 }
