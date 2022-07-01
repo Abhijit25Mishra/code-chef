@@ -3,7 +3,7 @@
 #pragma GCC optimize("Ofast")
 #pragma GCC optimize("no-stack-protector")
 #pragma GCC optimize("unroll-loops")
-//#pragma GCC target("sse,sse2,sse3,ssse3,popcnt,abm,mmx,tune=native")
+#pragma GCC target("sse,sse2,sse3,ssse3,popcnt,abm,mmx,tune=native")
 #pragma GCC optimize("fast-math")
 #pragma GCC optimize("Ofast")
 #pragma GCC optimize("unroll-loops")
@@ -42,53 +42,58 @@ int main()
     cin >> t;
     while (t--)
     {
-        ll n;
-        cin >> n;
-        n = n << 1;
-        ll a[n];
-        ll even = 0, odd = 0;
-        vi ev;
+        ll n, a, b;
+        cin >> n >> a >> b;
+        ll x[n] = {0}, y[n] = {0};
+        ll i = 0;
+        while (a > 0)
+        {
+            x[i] = a % 2;
+            a /= 2;
+            i++;
+        }
+        i = 0;
+        while (b > 0)
+        {
+            y[i] = b % 2;
+            b /= 2;
+            i++;
+        }
+        ll z[n] = {0};
+        ll onex = 0, oney = 0;
         fr(n)
         {
-            cin >> a[i];
-            if (a[i] & 1)
-                odd++;
+            if (x[i] == y[i])
+            {
+                z[i] = abs(1 - x[i]);
+            }
             else
-                ev.pb(a[i]);
-        }
-        even = ev.size();
-        if (odd == even)
-        {
-            cout << 0;
-        }
-        else if (odd > even)
-        {
-            cout << (odd - even) / 2;
-        }
-        else
-        {
-            ll ans = 0;
-
-            ll k = (even - odd) / 2;
-            fr(ev.size())
             {
-                while ((ev[i] % 2) == 0)
+                if (onex == oney)
                 {
-                    ev[i] = ev[i] >> 1;
-                    ans++;
+                    z[i] = abs(1 - x[i]);
                 }
-                ev[i] = ans;
-                ans = 0;
-            }
-            sort(all(ev));
-            ll z = 0;
-            fr(k)
-            {
-                z += ev[i];
-            }
-            cout << z;
-        }
+                else if (onex > oney)
+                {
+                    z[i] = x[i];
+                }
+                else
+                {
+                    z[i] = y[i];
+                }
 
+                onex += x[i];
+                oney += y[i];
+            }
+            // cout << x[i] << " " << y[i];
+            // nl;
+        }
+        ll ans = 0;
+        fr(n)
+        {
+            ans += z[i] << i;
+        }
+        cout << ans;
         nl;
     }
     return 0;
