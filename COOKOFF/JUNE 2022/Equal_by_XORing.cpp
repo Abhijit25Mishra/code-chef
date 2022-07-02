@@ -35,6 +35,11 @@ typedef vector<ll> vi;
 const unsigned int M = 1000000007;
 const int N = 2e5 + 5;
 
+bool isPowerOfTwo(int n)
+{
+    return (ceil(log2(n)) == floor(log2(n)));
+}
+
 int main()
 {
     fast;
@@ -45,22 +50,27 @@ int main()
         ll a, b, n;
         cin >> a >> b >> n;
         ll k = a ^ b;
+        ll z = 1;
+        while (z < n)
+        {
+            z *= 2;
+        }
 
         if (a == b)
         {
             cout << 0;
         }
-        else if (k > n)
+        else if (k < n)
         {
-            cout << -1;
+            cout << 1;
         }
-        else if (k == n)
+        else if (k < z)
         {
             cout << 2;
         }
         else
         {
-            cout << 1;
+            cout << -1;
         }
         nl;
     }
