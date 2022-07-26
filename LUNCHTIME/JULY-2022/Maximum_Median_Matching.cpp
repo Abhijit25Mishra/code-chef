@@ -44,26 +44,27 @@ int main()
     {
         ll n;
         cin >> n;
-        string s;
-        cin >> s;
-        ll con = 0;
-        bool ok = false;
+        vi b(n), g(n);
         fr(n)
         {
-            if (!(s[i] == 'a' || s[i] == 'e' || s[i] == 'i' || s[i] == 'o' || s[i] == 'u'))
-            {
-                con++;
-            }
-            else
-            {
-                con = 0;
-            }
-            if (con >= 4)
-            {
-                ok = true;
-            }
+            cin >> b[i];
         }
-        ok ? cout << "NO" : cout << "YES";
+        fr(n)
+        {
+            cin >> g[i];
+        }
+        sort(all(g));
+        sort(all(b));
+
+        ll ans = LLONG_MAX;
+        rep(i, n / 2, n)
+        {
+            ll sum = b[i] + g[n - 1 + n / 2 - i];
+            // cout << b[i] << " " << g[i] << " " << sum;
+            // nl;
+            ans = min(ans, sum);
+        }
+        cout << ans;
         nl;
     }
     return 0;

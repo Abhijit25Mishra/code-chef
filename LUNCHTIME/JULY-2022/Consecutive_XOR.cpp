@@ -44,26 +44,49 @@ int main()
     {
         ll n;
         cin >> n;
-        string s;
-        cin >> s;
-        ll con = 0;
-        bool ok = false;
-        fr(n)
+        string a, b;
+        cin >> a >> b;
+        bool alt = false, one = false;
+        fr(n - 1)
         {
-            if (!(s[i] == 'a' || s[i] == 'e' || s[i] == 'i' || s[i] == 'o' || s[i] == 'u'))
+            if (b[i] == b[i + 1])
             {
-                con++;
+                alt = true;
+            }
+            if (a[i] == '1' || a[i + 1] == '1')
+            {
+                one = true;
+            }
+        }
+
+        if (n == 1 && a == b)
+        {
+            cout << "YES";
+        }
+        else if (n == 1)
+        {
+            cout << "NO";
+        }
+        if (!alt)
+        {
+            if (a == b)
+            {
+                cout << "YES";
             }
             else
             {
-                con = 0;
-            }
-            if (con >= 4)
-            {
-                ok = true;
+                cout << "NO";
             }
         }
-        ok ? cout << "NO" : cout << "YES";
+        else
+        {
+            if (one || a == b)
+                cout << "YES";
+            else
+            {
+                cout << "NO";
+            }
+        }
         nl;
     }
     return 0;

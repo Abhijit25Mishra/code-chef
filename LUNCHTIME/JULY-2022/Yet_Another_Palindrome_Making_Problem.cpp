@@ -44,26 +44,33 @@ int main()
     {
         ll n;
         cin >> n;
-        string s;
-        cin >> s;
-        ll con = 0;
-        bool ok = false;
+        vector<char> v(n);
         fr(n)
         {
-            if (!(s[i] == 'a' || s[i] == 'e' || s[i] == 'i' || s[i] == 'o' || s[i] == 'u'))
+            cin >> v[i];
+        }
+        bool ok = false;
+        vi odd(26), even(26);
+        fr(n)
+        {
+            if (i & 1)
             {
-                con++;
+                odd[(ll)v[i] - 97]++;
             }
             else
             {
-                con = 0;
-            }
-            if (con >= 4)
-            {
-                ok = true;
+                even[(ll)v[i] - 97]++;
             }
         }
-        ok ? cout << "NO" : cout << "YES";
+        ll cnt = 0;
+        fr(26)
+        {
+            if (even[i] == odd[i])
+            {
+                cnt++;
+            }
+        }
+        cnt == 26 ? cout << "YES" : cout << "NO";
         nl;
     }
     return 0;

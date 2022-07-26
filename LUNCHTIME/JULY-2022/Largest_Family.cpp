@@ -44,26 +44,32 @@ int main()
     {
         ll n;
         cin >> n;
-        string s;
-        cin >> s;
-        ll con = 0;
-        bool ok = false;
+        vi v(n);
+        fr(n) { cin >> v[i]; }
+        sort(all(v));
+        ll sum = 0;
+        ll ans = 0;
         fr(n)
         {
-            if (!(s[i] == 'a' || s[i] == 'e' || s[i] == 'i' || s[i] == 'o' || s[i] == 'u'))
+            if (sum + v[i] <= n - 1)
             {
-                con++;
+                sum += v[i];
+                ans = i;
             }
             else
             {
-                con = 0;
-            }
-            if (con >= 4)
-            {
-                ok = true;
+                break;
             }
         }
-        ok ? cout << "NO" : cout << "YES";
+        // if (ans = n - 1)
+        // {
+        //     ans = n;
+        // }
+        // if (ans + 2 == n)
+        // {
+        //     ans++;
+        // }
+        cout << ans + 1;
         nl;
     }
     return 0;
