@@ -44,44 +44,38 @@ int main()
     {
         ll n;
         cin >> n;
-        vi a(n), b(n - 1);
-        fr(n) { cin >> a[i]; }
-        fr(n - 1) { cin >> b[i]; }
-        sort(all(a));
-        sort(all(b));
-        ll diff;
-        if (n == 2)
+        ll mx = -1;
+        while (n--)
         {
-            if (b[0] > a[1])
+            ll q, x, y;
+            cin >> q >> x >> y;
+            if (q == 1)
             {
-                diff = b[0] - a[1];
+                mx = max(x, y);
+                cout << "YES";
+                nl;
             }
             else
             {
-                diff = b[0] - a[0];
-            }
-        }
-        else
-        {
-
-            if (b[0] - a[0] == b[n - 2] - a[n - 1])
-            {
-                diff = b[0] - a[0];
-            }
-            else
-            {
-                if (b[n - 2] - a[n - 1] == b[n - 3] - a[n - 2] && b[n - 2] - a[n - 1] > 0)
+                if (max(x, y) >= mx && mx > min(x, y))
                 {
-                    diff = b[n - 2] - a[n - 1];
+                    mx = max(x, y);
+                    cout << "YES";
+                    nl;
+                }
+                else if (x == y)
+                {
+
+                    cout << "YES";
+                    nl;
                 }
                 else
                 {
-                    diff = b[0] - a[0];
+                    cout << "NO";
+                    nl;
                 }
             }
         }
-        cout << diff;
-        nl;
     }
     return 0;
 }
