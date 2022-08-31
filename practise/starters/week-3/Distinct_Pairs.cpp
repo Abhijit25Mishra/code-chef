@@ -1,11 +1,6 @@
 // Aur Bhai Dekhne aagaye ;)
 // Author: Abhijit Mishra
 #pragma GCC optimize("Ofast")
-#pragma GCC optimize("no-stack-protector")
-#pragma GCC optimize("unroll-loops")
-//#pragma GCC target("sse,sse2,sse3,ssse3,popcnt,abm,mmx,tune=native")
-#pragma GCC optimize("fast-math")
-#pragma GCC optimize("Ofast")
 #pragma GCC optimize("unroll-loops")
 #pragma GCC target("avx,avx2,fma")
 #include <bits/stdc++.h>
@@ -14,7 +9,6 @@ using namespace std;
 #define mod 1000000007
 #define pb push_back
 #define is insert
-#define mp make_pair
 #define ff first
 #define ss second
 #define all(x) x.begin(), x.end()
@@ -38,45 +32,66 @@ const int N = 2e5 + 5;
 int main()
 {
     fast;
-    ll t = 1;
-    cin >> t;
-    while (t--)
+    ll n, m;
+    cin >> n >> m;
+    vi a, b;
+    map<ll, pair<ll, ll>> mp;
+    fr(n)
     {
-        ll n, m, x, y;
-        cin >> n >> m >> x >> y;
-        if ((x % 2 == 0) && (y & 1))
-        {
-            cout << "Yes";
-        }
-        else if ((x & 1) && (y & 1))
-        {
-            ll k = m + n;
-            if (k & 1)
-            {
-                cout << "Yes";
-            }
-            else
-            {
-                cout << "No";
-            }
-        }
-        else if ((x % 2 == 0) && (y % 2 == 0))
-        {
-            ll k = m + n;
-            if (k & 1)
-            {
-                cout << "No";
-            }
-            else
-            {
-                cout << "Yes";
-            }
-        }
-        else if (x & 1 && (y % 2 == 0))
-        {
-            cout << "Yes";
-        }
+        ll temp;
+        cin >> temp;
+        a.pb(temp);
+    }
+    fr(m)
+    {
+        ll temp;
+        cin >> temp;
+        b.pb(temp);
+    }
+
+    ll l = min_element(all(a)) - a.begin();
+    ll lt = max_element(all(b)) - b.begin();
+
+    fr(m)
+    {
+        cout << l << " " << i;
         nl;
     }
+    fr(n)
+    {
+        if (i != l)
+            cout << i << " " << lt;
+        nl;
+    }
+    // vector<pair<ll, ll>> v;
+    // fr(n)
+    // {
+    //     if (mp.size() > n + m - 1)
+    //     {
+    //         break;
+    //     }
+
+    //     for (int j = 0; j < m; j++)
+    //     {
+    //         if (mp.size() > n + m - 1)
+    //         {
+    //             break;
+    //         }
+    //         mp.insert(make_pair(a[i] + b[j], make_pair(i, j)));
+    //     }
+    // }
+    // ll cnt = 0;
+
+    // for (auto x : mp)
+    // {
+    //     if (cnt >= n + m - 1)
+    //     {
+    //         break;
+    //     }
+    //     cout << x.second.first << " " << x.second.second;
+    //     cnt++;
+    //     nl;
+    // }
+
     return 0;
 }

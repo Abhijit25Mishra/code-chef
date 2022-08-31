@@ -1,11 +1,6 @@
 // Aur Bhai Dekhne aagaye ;)
 // Author: Abhijit Mishra
 #pragma GCC optimize("Ofast")
-#pragma GCC optimize("no-stack-protector")
-#pragma GCC optimize("unroll-loops")
-//#pragma GCC target("sse,sse2,sse3,ssse3,popcnt,abm,mmx,tune=native")
-#pragma GCC optimize("fast-math")
-#pragma GCC optimize("Ofast")
 #pragma GCC optimize("unroll-loops")
 #pragma GCC target("avx,avx2,fma")
 #include <bits/stdc++.h>
@@ -14,7 +9,6 @@ using namespace std;
 #define mod 1000000007
 #define pb push_back
 #define is insert
-#define mp make_pair
 #define ff first
 #define ss second
 #define all(x) x.begin(), x.end()
@@ -42,41 +36,37 @@ int main()
     cin >> t;
     while (t--)
     {
-        ll n, m, x, y;
-        cin >> n >> m >> x >> y;
-        if ((x % 2 == 0) && (y & 1))
+        ll n;
+        cin >> n;
+        vi v(n);
+        vi lst;
+        fr(n)
         {
-            cout << "Yes";
+            cin >> v[i];
         }
-        else if ((x & 1) && (y & 1))
+        ll res = 0;
+        ll l;
+        while (v.size() != 0)
         {
-            ll k = m + n;
-            if (k & 1)
+            res++;
+            l = v.front();
+            if (*max_element(all(v)) < l)
             {
-                cout << "Yes";
+                lst.pb(l);
             }
             else
             {
-                cout << "No";
+                lst.erase(max_element(all(v)));
+                lst.pb(l);
             }
         }
-        else if ((x % 2 == 0) && (y % 2 == 0))
+        cout << res << " ";
+        sort(all(lst));
+        fr(lst.size())
         {
-            ll k = m + n;
-            if (k & 1)
-            {
-                cout << "No";
-            }
-            else
-            {
-                cout << "Yes";
-            }
+            cout << lst[i] << " ";
         }
-        else if (x & 1 && (y % 2 == 0))
-        {
-            cout << "Yes";
-        }
-        nl;
     }
+
     return 0;
 }

@@ -42,40 +42,27 @@ int main()
     cin >> t;
     while (t--)
     {
-        ll n, m, x, y;
-        cin >> n >> m >> x >> y;
-        if ((x % 2 == 0) && (y & 1))
+        ll a, b;
+        cin >> a >> b;
+        ll cnt = 0;
+        vi c;
+        while (a > 0)
         {
-            cout << "Yes";
+            if (!(b & 1))
+            {
+                c.pb(a & 1);
+            }
+
+            a = a >> 1;
+            b = b >> 1;
         }
-        else if ((x & 1) && (y & 1))
+        ll ans = 0;
+
+        fr(c.size())
         {
-            ll k = m + n;
-            if (k & 1)
-            {
-                cout << "Yes";
-            }
-            else
-            {
-                cout << "No";
-            }
+            ans += pow(2, i) * c[i];
         }
-        else if ((x % 2 == 0) && (y % 2 == 0))
-        {
-            ll k = m + n;
-            if (k & 1)
-            {
-                cout << "No";
-            }
-            else
-            {
-                cout << "Yes";
-            }
-        }
-        else if (x & 1 && (y % 2 == 0))
-        {
-            cout << "Yes";
-        }
+        cout << ans;
         nl;
     }
     return 0;

@@ -1,11 +1,6 @@
 // Aur Bhai Dekhne aagaye ;)
 // Author: Abhijit Mishra
 #pragma GCC optimize("Ofast")
-#pragma GCC optimize("no-stack-protector")
-#pragma GCC optimize("unroll-loops")
-//#pragma GCC target("sse,sse2,sse3,ssse3,popcnt,abm,mmx,tune=native")
-#pragma GCC optimize("fast-math")
-#pragma GCC optimize("Ofast")
 #pragma GCC optimize("unroll-loops")
 #pragma GCC target("avx,avx2,fma")
 #include <bits/stdc++.h>
@@ -14,7 +9,6 @@ using namespace std;
 #define mod 1000000007
 #define pb push_back
 #define is insert
-#define mp make_pair
 #define ff first
 #define ss second
 #define all(x) x.begin(), x.end()
@@ -42,41 +36,6 @@ int main()
     cin >> t;
     while (t--)
     {
-        ll n, m, x, y;
-        cin >> n >> m >> x >> y;
-        if ((x % 2 == 0) && (y & 1))
-        {
-            cout << "Yes";
         }
-        else if ((x & 1) && (y & 1))
-        {
-            ll k = m + n;
-            if (k & 1)
-            {
-                cout << "Yes";
-            }
-            else
-            {
-                cout << "No";
-            }
-        }
-        else if ((x % 2 == 0) && (y % 2 == 0))
-        {
-            ll k = m + n;
-            if (k & 1)
-            {
-                cout << "No";
-            }
-            else
-            {
-                cout << "Yes";
-            }
-        }
-        else if (x & 1 && (y % 2 == 0))
-        {
-            cout << "Yes";
-        }
-        nl;
-    }
     return 0;
 }
